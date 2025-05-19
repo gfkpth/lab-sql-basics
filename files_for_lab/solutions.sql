@@ -116,7 +116,7 @@ LIMIT 10;
 
 SELECT `date`,COUNT(loan_id)
 FROM loan l
-WHERE "date" < 930907
+WHERE `date` < 930907
 GROUP BY `date`
 ORDER BY `date` DESC;
 
@@ -131,22 +131,22 @@ ORDER BY loan_per_day DESC;
 -- 17. In the loan table, for each day in December 1997, count the number of loans issued for each unique loan duration, ordered by date and duration, both in ascending order. You can ignore days without any loans in your output.
 -- sidetracked by not recognising date format (thinking it represents some time of large integer counting from a starting date)
 
-SELECT date,duration,COUNT(loan_id) AS lcount
+SELECT `date`,duration,COUNT(loan_id) AS lcount
 FROM loan
-WHERE date BETWEEN 971201 AND 971231
-GROUP BY date,duration
-ORDER BY date,duration;
+WHERE `date` BETWEEN 971201 AND 971231
+GROUP BY `date`,duration
+ORDER BY `date`,duration;
 
 -- the proposed solution seems to stop after 25 December for some reason, I've got some more results for the days till the end of the year
 
 
 -- 18. In the trans table, for account_id 396, sum the amount of transactions for each type (VYDAJ = Outgoing, PRIJEM = Incoming). Your output should have the account_id, the type and the sum of amount, named as total_amount. Sort alphabetically by type.
 
-SELECT account_id,type,SUM(amount) AS total_amount
+SELECT account_id,`type`,SUM(amount) AS total_amount
 FROM trans t 
 WHERE account_id = 396
-GROUP BY type
-ORDER BY type;
+GROUP BY `type`
+ORDER BY `type`;
 
 
 
