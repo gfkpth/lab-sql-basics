@@ -55,27 +55,27 @@ LIMIT 5;			-- listing lowest 5 loan amounts here, since the task uses the plural
 -- 8. What are the unique values of k_symbol in the order table?
 -- Note: There shouldn't be a table name order, since order is reserved from the ORDER BY clause. You have to use backticks to escape the order table name.
 
-SELECT DISTINCT k_symbol FROM 'order';
+SELECT DISTINCT k_symbol FROM `order`;
 
 
 -- 9. In the order table, what are the order_ids of the client with the account_id 34?
 
-SELECT order_id FROM 'order' WHERE account_id = 34;
+SELECT order_id FROM `order` WHERE account_id = 34;
 
 
 -- 10. In the order table, which account_ids were responsible for orders between order_id 29540 and order_id 29560 (inclusive)?
 
-SELECT account_id FROM 'order' WHERE order_id BETWEEN 29540 AND 29560;
+SELECT account_id FROM `order` WHERE order_id BETWEEN 29540 AND 29560;
 
 -- 11. In the order table, what are the individual amounts that were sent to (account_to) id 30067122?
 
-SELECT amount FROM 'order' WHERE account_to = 30067122;
+SELECT amount FROM `order` WHERE account_to = 30067122;
 
 
 -- 12. In the trans table, show the trans_id, date, type and amount of the 10 first transactions from account_id 793 in chronological order, from newest to oldest.
 --SELECT * FROM trans LIMIT 3;
 
-SELECT trans_id, date, type, amount 
+SELECT trans_id, `date`, `type`, amount 
 from trans 
 WHERE account_id = 793 
 ORDER BY trans_id DESC 				-- assuming that trans_id is also assigned chronologically, sorting descendingly for new-to-old
@@ -98,9 +98,9 @@ ORDER BY district_ID ASC;
 
 SELECT * FROM card LIMIT 5;
 
-SELECT type, COUNT(card_id) AS cardcount
+SELECT `type`, COUNT(card_id) AS cardcount
 from card c 
-GROUP BY "type" 
+GROUP BY `type` 
 ORDER BY cardcount DESC;
 
 
@@ -114,11 +114,11 @@ LIMIT 10;
 
 -- 16. In the loan table, retrieve the number of loans issued for each day, before (excl) 930907, ordered by date in descending order.
 
-SELECT "date",COUNT(loan_id)
+SELECT `date`,COUNT(loan_id)
 FROM loan l
 WHERE "date" < 930907
-GROUP BY "date"
-ORDER BY "date" DESC;
+GROUP BY `date`
+ORDER BY `date` DESC;
 
 /* sanity check to make sure that the count is actually working (above result gives only 1 counts)
 SELECT "date",COUNT(loan_id) AS loan_per_day
