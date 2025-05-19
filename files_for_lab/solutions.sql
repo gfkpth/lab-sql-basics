@@ -46,7 +46,7 @@ LIMIT 5;
 
 -- SELECT * FROM loan LIMIT 5;  -- overview
 
-SELECT account_id,amount
+SELECT account_id
 FROM loan l 
 WHERE duration = 60
 ORDER BY amount ASC
