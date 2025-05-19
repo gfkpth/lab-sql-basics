@@ -2,13 +2,13 @@
 
 -- 1. Get the `id` values of the first 5 clients from `district_id` with a value equals to 1.
 
-SELECT client_id FROM client WHERE district_id==1 LIMIT 5;
+SELECT client_id FROM client WHERE district_id=1 LIMIT 5;
 
 -- 2. In the client table, get an id value of the last client where the district_id equals to 72.
 
 SELECT client_id 
 FROM client 
-WHERE district_id == 75 
+WHERE district_id = 72 
 ORDER BY client_id DESC 			-- sort descending by client_id to get reverse chronological order
 LIMIT 1;							-- we just need the last value
 
@@ -48,7 +48,7 @@ LIMIT 5;
 
 SELECT account_id,amount
 FROM loan l 
-WHERE duration == 60
+WHERE duration = 60
 ORDER BY amount ASC
 LIMIT 5;			-- listing lowest 5 loan amounts here, since the task uses the plural
 
@@ -60,7 +60,7 @@ SELECT DISTINCT k_symbol FROM 'order';
 
 -- 9. In the order table, what are the order_ids of the client with the account_id 34?
 
-SELECT order_id FROM 'order' WHERE account_id == 34;
+SELECT order_id FROM 'order' WHERE account_id = 34;
 
 
 -- 10. In the order table, which account_ids were responsible for orders between order_id 29540 and order_id 29560 (inclusive)?
@@ -69,7 +69,7 @@ SELECT account_id FROM 'order' WHERE order_id BETWEEN 29540 AND 29560;
 
 -- 11. In the order table, what are the individual amounts that were sent to (account_to) id 30067122?
 
-SELECT amount FROM 'order' WHERE account_to == 30067122;
+SELECT amount FROM 'order' WHERE account_to = 30067122;
 
 
 -- 12. In the trans table, show the trans_id, date, type and amount of the 10 first transactions from account_id 793 in chronological order, from newest to oldest.
@@ -77,7 +77,7 @@ SELECT amount FROM 'order' WHERE account_to == 30067122;
 
 SELECT trans_id, date, type, amount 
 from trans 
-WHERE account_id == 793 
+WHERE account_id = 793 
 ORDER BY trans_id DESC 				-- assuming that trans_id is also assigned chronologically, sorting descendingly for new-to-old
 LIMIT 10;
 
@@ -144,7 +144,7 @@ ORDER BY date,duration;
 
 SELECT account_id,type,SUM(amount) AS total_amount
 FROM trans t 
-WHERE account_id == 396
+WHERE account_id = 396
 GROUP BY type
 ORDER BY type;
 
