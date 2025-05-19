@@ -36,7 +36,7 @@ LIMIT 1;
 
 -- 6. What is the loan amount of the lowest 5 account_ids in the loan table? Show the account_id and the corresponding amount
 
-SELECT loan_id, amount, account_id
+SELECT account_id, amount
 FROM loan l 
 ORDER BY account_id ASC
 LIMIT 5;
